@@ -40,12 +40,12 @@ export const findAll = async (): Promise<Item[]> => Object.values(itens);
 
 export const find = async (id: number): Promise<Item> => itens[id];
 
-export const create = async (novoItem: BaseItem): Promise<Item> => {
+export const create = async (newItem: BaseItem): Promise<Item> => {
     const id = new Date().valueOf();
 
     itens[id] = {
         id,
-        ...novoItem,
+        ...newItem,
     };
 
     return itens[id];
