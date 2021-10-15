@@ -20,7 +20,7 @@ itensRouter.get("/", async (req: Request, res: Response) => {
         const itens: Item[] = await ItemService.findAll();
 
         res.status(200).send(itens);
-    } catch (e) {
+    } catch (e: any) {
         res.status(500).send(e.message);
     }
 });
@@ -37,7 +37,7 @@ itensRouter.get("/:id", async (req: Request, res: Response) => {
         }
 
         res.status(404).send("item não encontrado");
-    } catch (e) {
+    } catch (e: any) {
         res.status(500).send(e.message);
     }
 });
@@ -50,7 +50,7 @@ itensRouter.post("/", async (req: Request, res: Response) => {
         const newItem = await ItemService.create(item);
 
         res.status(201).json(newItem);
-    } catch (e) {
+    } catch (e: any) {
         res.status(500).send(e.message);
     }
 });
@@ -72,7 +72,7 @@ itensRouter.put("/:id", async (req: Request, res: Response) => {
         const newItem = await ItemService.create(itemUpdate);
 
         res.status(201).json(newItem);
-    } catch (e) {
+    } catch (e: any) {
         res.status(500).send(e.message);
     }
 });
@@ -84,7 +84,7 @@ itensRouter.delete("/:id", async (req: Request, res: Response) => {
         await ItemService.remove(id);
 
         res.sendStatus(204);
-    } catch (e) {
+    } catch (e: any) {
         res.status(500).send(e.message);
     }
 });
